@@ -49,14 +49,15 @@ public final class UseListsAndMaps {
          * (Suggestion: use a temporary variable)
          */
         Integer temp = newArList.get(first);
-        newArList.set(first, newArList.get(start));
-        newArList.set(start, temp);
+        newArList.set(first, newArList.get(start-1));
+        newArList.set(start-1, temp);
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
         for (Integer elem : newArList) {
             System.out.print("" + elem + " ");
         }
+        System.out.println("");
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
