@@ -55,6 +55,11 @@ si verifichi lo stato del repository con `git status`.
 - git checkout master; git merge feature
 
 6. Si crei un nuovo repository nel proprio github personale
+- git@github.com:Svegog/lab6_61_point6_7_8_9.git
+
 7. Si aggiunga il nuovo repository creato come **remote** e si elenchino i remote
+- git remote remove origin
+- git remote add origin git@github.com:Svegog/lab6_61_point6_7_8_9.git
+
 8. Si faccia push del branch `master` sul proprio repository
 9. Si setti il branch remoto `master` del nuovo repository come *upstream* per il proprio branch `master` locale
