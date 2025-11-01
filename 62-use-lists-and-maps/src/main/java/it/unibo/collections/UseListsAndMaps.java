@@ -1,5 +1,9 @@
 package it.unibo.collections;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,23 +21,38 @@ public final class UseListsAndMaps {
      *            unused
      */
     public static void main(final String... s) {
+        final int first = 0;
+        final int start = 1000;
+        final int end = 2000;
         /*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
          */
+        List<Integer> newArList = new ArrayList<>();
+
+        for (int i = start; i < end; i++) {
+            newArList.add(i);
+        }
         /*
          * 2) Create a new LinkedList<Integer> and, in a single line of code
          * without using any looping construct (for, while), populate it with
          * the same contents of the list of point 1.
          */
+        List<Integer> newLiList = new LinkedList<>(newArList);
         /*
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
          * (Suggestion: use a temporary variable)
          */
+        Integer temp = newArList.get(first);
+        newArList.set(first, newArList.get(start));
+        newArList.set(start, temp);
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
+        for (Integer elem : newArList) {
+            System.out.print("" + elem + " ");
+        }
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
@@ -63,8 +82,23 @@ public final class UseListsAndMaps {
          *
          * Oceania -> 38,304,000
          */
+        Map<String,Long> newMap = new HashMap<>();
+        newMap.put("Africa", 1110635000L);
+        newMap.put("Americas", 972005000L);
+        newMap.put("Antartica", 0L);
+        newMap.put("Asia", 4298723000L);
+        newMap.put("Europe", 742452000L);
+        newMap.put("Oceania", 38304000L);
         /*
          * 8) Compute the population of the world
          */
+        long population = 0L;
+        Collection<Long> mapValues = newMap.values();
+
+        for (Long elem : mapValues) {
+            population = population + elem;
+        }
+
+        System.out.println("The World Population is: " + population);
     }
 }
