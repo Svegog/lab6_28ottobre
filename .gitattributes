@@ -1,0 +1,8 @@
+# normalizza da solo la fine linea ad LF per tutti i file di testo ( non bin )
+* text=auto eol=lf
+# per file .cmd ( case insensitive ) forzo CRLF
+*.[cC][mM][cD] text eol=crlf
+# per file .bat ( batch script )
+*.[bB][aA][tT] text eol=crlf
+# per file .ps1 ( powershell script )
+*.[pP][sS]1 text eol=crlf
