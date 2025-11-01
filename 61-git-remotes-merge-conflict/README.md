@@ -23,14 +23,37 @@ si verifichi lo stato del repository con `git status`.
    Your branch is up to date with 'origin/feature'.
    nothing to commit (use -u to show untracked files)
 
-3. Si faccia il merge di `feature` dentro `master`, ossia: si posizioni la `HEAD` su `master`
-   e da qui si esegua il merge di `feature`
+3. Si faccia il merge di `feature` dentro `master`, ossia: si posizioni la `HEAD` su `master` e da qui si esegua il merge di `feature`
+- git checkout master
+- git merge feature:
+   Auto-merging HelloWorld.java
+   CONFLICT (content): Merge conflict in HelloWorld.java
+   Automatic merge failed; fix conflicts and then commit the result.
+
 4. Si noti che viene generato un **merge conflict**!
+- git status:
+   On branch master
+   Your branch is up to date with 'origin/master'.
+   You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+   Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   HelloWorld.java
+   no changes added to commit (use "git add" and/or "git commit -a")
+- git merge --abort
+
 5. Si risolva il merge conflict come segue:
    - Il programma Java risultante deve stampare sia il numero di processori disponibili
      (funzionalità presente su `master`)
      che il nome dell'autore del file
      (funzionalità presente su `feature`)
+- git checkout feature; nvim HelloWorld.java ( prendo la parte del programma da feature )
+- git checkout master ( modifico HelloWorld.java di master )
+- git add HelloWorld.java; git commit -m "Modifying master's HelloWorld.java"
+- git checkout feature ( faccio lo stesso in feature )
+- git checkout master; git merge feature
+
 6. Si crei un nuovo repository nel proprio github personale
 7. Si aggiunga il nuovo repository creato come **remote** e si elenchino i remote
 8. Si faccia push del branch `master` sul proprio repository
