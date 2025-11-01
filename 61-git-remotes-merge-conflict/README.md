@@ -15,6 +15,14 @@ si verifichi lo stato del repository con `git status`.
 - git clone git@github.com:APICe-at-DISI/OOP-git-merge-conflict-test.git
 
 2. Ci si assicuri di avere localmente entrambi i branch remoti
+- avendo fatto `git clone` il branch di default master è già stato salvato localmente
+- git checkout -b feature origin/feature
+- git --no-pager branch -a
+- git status:
+   On branch feature
+   Your branch is up to date with 'origin/feature'.
+   nothing to commit (use -u to show untracked files)
+
 3. Si faccia il merge di `feature` dentro `master`, ossia: si posizioni la `HEAD` su `master`
    e da qui si esegua il merge di `feature`
 4. Si noti che viene generato un **merge conflict**!
