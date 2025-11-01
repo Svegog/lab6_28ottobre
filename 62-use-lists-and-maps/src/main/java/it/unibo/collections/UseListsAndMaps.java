@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Example class using {@link List} and {@link Map}.
@@ -24,6 +25,9 @@ public final class UseListsAndMaps {
         final int first = 0;
         final int start = 1000;
         final int end = 2000;
+        final int ELEM_5 = 100000;
+        final int ELEM_6 = 1000;
+
         /*
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
@@ -60,12 +64,61 @@ public final class UseListsAndMaps {
          * using the previous lists. In order to measure times, use as example
          * TestPerformance.java.
          */
+        newArList.clear();
+        long timeArList = System.nanoTime();
+
+        for (int i = 0; i < ELEM_5; i++) {
+            newArList.add(i);
+        }
+
+        timeArList = System.nanoTime() - timeArList;
+        var millisArList = TimeUnit.NANOSECONDS.toMillis(timeArList);
+
+        newLiList.clear();
+        long timeLiList = System.nanoTime();
+
+        for (int i = 0; i < ELEM_5; i++) {
+            newLiList.add(i);
+        }
+
+        timeLiList = System.nanoTime() - timeLiList;
+        var millisLiList = TimeUnit.NANOSECONDS.toMillis(timeLiList);
+
+        System.out.println(
+            "Time for inserting 100.000 element in: " +
+            "[ArrayList: "+millisArList+"ms]" + " [LinkedList: "+millisLiList+"ms]"
+            );
         /*
          * 6) Measure the performance of reading 1000 times an element whose
          * position is in the middle of the collection for both ArrayList and
          * LinkedList, using the collections of point 5. In order to measure
          * times, use as example TestPerformance.java.
          */
+        temp = ELEM_5 / 2;
+        int readValue;
+
+        timeArList = System.nanoTime();
+
+        for (int i = temp; i < (temp + ELEM_6); i++) {
+            readValue = newArList.get(i);
+        } 
+
+        timeArList = System.nanoTime() - timeArList;
+        var millisArList2 = TimeUnit.NANOSECONDS.toMillis(timeArList);
+
+        timeLiList = System.nanoTime();
+
+        for (int i = temp; i < (temp + ELEM_6); i++) {
+            readValue = newLiList.get(i);
+        }
+
+        timeLiList = System.nanoTime() - timeLiList;
+        var millisLiList2 = TimeUnit.NANOSECONDS.toMillis(timeLiList);
+
+        System.out.println(
+            "Time for reading 1000 element in: " +
+            "[ArrayList: "+millisArList2+"ms]" + " [LinkedList: "+millisLiList2+"ms]"
+            );
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
