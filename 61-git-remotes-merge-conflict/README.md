@@ -62,4 +62,8 @@ si verifichi lo stato del repository con `git status`.
 - git remote add origin git@github.com:Svegog/lab6_61_point6_7_8_9.git
 
 8. Si faccia push del branch `master` sul proprio repository
+- git push -u origin master
+
 9. Si setti il branch remoto `master` del nuovo repository come *upstream* per il proprio branch `master` locale
+- git branch --set-upstream-to=origin/master
+
