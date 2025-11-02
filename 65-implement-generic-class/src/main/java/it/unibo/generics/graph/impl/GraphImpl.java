@@ -14,8 +14,8 @@ import it.unibo.generics.graph.api.Graph;
 
 public class GraphImpl<N> implements Graph<N> {
 
-    private Map<N,List<N>> mapForGraph = new HashMap<>();
-    private List<N> nodeList = new ArrayList<>();
+    protected Map<N,List<N>> mapForGraph = new HashMap<>();
+    protected List<N> nodeList = new ArrayList<>();
 
     public void addNode(N node) {
         if(!nodeList.contains(node)) {
